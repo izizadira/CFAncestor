@@ -1,0 +1,23 @@
+# Настройка предмета
+item:
+  material: BREEZE_ROD
+  display-name: "&#8BE9DE&lПрародитель"
+  lore:
+    - ""
+    - "&fПредмет, который при клике по"
+    - "&#8BE9DEспавнеру, &fрандомно меняет &#8BE9DEмоба"
+    - ""
+  glow: true
+
+# Мобы, которые могут выпасть при ПКМ по спавнеру
+permitted-mobs:
+  - "PIG"
+  - "ZOMBIE"
+  - "COW"
+  - "SLIME"
+  - "SPIDER"
+  - "SKELETON"
+  - "CREEPER"
+  - "LLAMA"
+  - "VILLAGER"
+
