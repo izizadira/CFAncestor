@@ -48,11 +48,6 @@ public class BukkitListener implements Listener {
         event.setCancelled(true);
 
         final Player player = event.getPlayer();
-        if (!player.hasPermission("cfancestor.use")) {
-            config.sendMessage(player, config.getNoPermissionMessage());
-            return;
-        }
-
         final String denial = this.checkRestrictions(player, block.getLocation());
         if (denial != null) {
             config.sendMessage(player, denial);
