@@ -1,23 +1,80 @@
-# Настройка предмета
 item:
   material: BREEZE_ROD
-  display-name: "&#8BE9DE&lПрародитель"
+  display-name: "<#8BE9DE><bold>Прародитель"
   lore:
     - ""
-    - "&fПредмет, который при клике по"
-    - "&#8BE9DEспавнеру, &fрандомно меняет &#8BE9DEмоба"
+    - "<white>Предмет, который при клике по"
+    - "<#8BE9DE>спавнеру, <white>рандомно меняет <#8BE9DE>моба"
     - ""
   glow: true
 
-# Мобы, которые могут выпасть при ПКМ по спавнеру
-permitted-mobs:
-  - "PIG"
-  - "ZOMBIE"
-  - "COW"
-  - "SLIME"
-  - "SPIDER"
-  - "SKELETON"
-  - "CREEPER"
-  - "LLAMA"
-  - "VILLAGER"
+# Мобы, которые могут выпасть при ПКМ по спавнеру, и их веса.
+# Шанс моба = его вес / сумма весов всех мобов.
+# Текущий моб спавнера в розыгрыше не участвует, поэтому моб всегда меняется.
+mobs:
+  PIG: 20
+  COW: 20
+  ZOMBIE: 15
+  SKELETON: 15
+  SPIDER: 10
+  SLIME: 8
+  LLAMA: 5
+  CREEPER: 5
+  VILLAGER: 2
 
+# Сколько раз Прародителя можно применить к одному спавнеру.
+# Обход: cfancestor.bypass.limit
+spawner-limit:
+  enabled: true
+  max-uses: 5
+
+# Задержка между использованиями для игрока, в секундах. 0 — без задержки.
+# Обход: cfancestor.bypass.cooldown
+cooldown: 5
+
+restrictions:
+  disabled-worlds:
+    - world_the_end
+  disabled-regions:
+    - spawn
+  # Требовать право строить в регионе WorldGuard, чтобы нельзя было
+  # менять спавнеры на чужой территории
+  require-build-access: true
+
+effects:
+  sound:
+    enabled: true
+    key: "entity.villager.yes"
+    volume: 1.0
+    pitch: 1.0
+
+  # Спирали из частиц, которые поднимаются вокруг спавнера
+  helix:
+    enabled: true
+    # Любая частица без доп. данных (END_ROD, FLAME, ...) либо DUST / ENTITY_EFFECT
+    particle: DUST
+    color: "#8BE9DE"      # только для DUST и ENTITY_EFFECT
+    size: 1.2             # только для DUST
+    strands: 3            # количество спиралей
+    radius: 0.9           # радиус у основания, к верху сужается вдвое
+    duration: 30          # длительность в тиках (20 тиков = 1 секунда)
+    rotation-speed: 0.3   # скорость вращения, радиан за тик
+
+  # Вспышка частиц в конце анимации
+  burst:
+    enabled: true
+    particle: END_ROD
+    color: "#FFFFFF"
+    size: 1.0
+    count: 40
+    speed: 0.12
+
+messages:
+  prefix: ""
+  no-permission: "Недостаточно прав."
+  spawner-changed: "Спавнер теперь призывает: <#8BE9DE><bold><mob>"
+  cooldown: "Подождите ещё <time> сек."
+  limit-reached: "Этот спавнер уже менялся максимальное число раз (<max>)."
+  no-mobs: "Поменять моба не получилось. Обратитесь к администрации."
+  disabled-here: "Здесь Прародитель не работает."
+  no-build-access: "Нельзя менять спавнеры на чужой территории."

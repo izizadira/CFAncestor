@@ -1,6 +1,8 @@
 name: CFAncestor
-version: 1.0.0
+version: 2.0.0
 main: ru.izizadira.cfancestor.CFAncestor
 api-version: '1.21.4'
+softdepend: [WorldGuard]
+
 commands:
   ancestor: {}
