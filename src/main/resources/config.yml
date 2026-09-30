@@ -3,13 +3,12 @@ item:
   display-name: "<#8BE9DE><bold>Прародитель"
   lore:
     - ""
-    - "<white>Предмет, который при клике по"
-    - "<#8BE9DE>спавнеру, <white>рандомно меняет <#8BE9DE>моба"
+    - " <white>Предмет, который при клике по"
+    - " <#8BE9DE>спавнеру, <white>рандомно меняет <#8BE9DE>моба"
     - ""
   glow: true
 
 # Мобы, которые могут выпасть при ПКМ по спавнеру, и их шансы.
-# Шанс моба = его вес / сумма шансов всех мобов.
 mobs:
   PIG: 20
   COW: 20
@@ -21,7 +20,7 @@ mobs:
   CREEPER: 5
   VILLAGER: 2
 
-# Сколько раз Прародителя можно применить к одному спавнеру.
+# Сколько раз можно применить к одному спавнеру.
 # Обход: cfancestor.bypass.limit
 spawner-limit:
   enabled: true
@@ -47,19 +46,16 @@ effects:
     volume: 1.0
     pitch: 1.0
 
-  # Спирали из частиц, которые поднимаются вокруг спавнера
   helix:
     enabled: true
-    # Любая частица без доп. данных (END_ROD, FLAME, ...) либо DUST / ENTITY_EFFECT
     particle: DUST
-    color: "#8BE9DE"      # только для DUST и ENTITY_EFFECT
-    size: 1.2             # только для DUST
-    strands: 3            # количество спиралей
-    radius: 0.9           # радиус у основания, к верху сужается вдвое
-    duration: 30          # длительность в тиках (20 тиков = 1 секунда)
-    rotation-speed: 0.3   # скорость вращения, радиан за тик
+    color: "#8BE9DE"
+    size: 1.2
+    strands: 3
+    radius: 0.9
+    duration: 30
+    rotation-speed: 0.3
 
-  # Вспышка частиц в конце анимации
   burst:
     enabled: true
     particle: END_ROD
@@ -71,7 +67,7 @@ effects:
 messages:
   prefix: ""
   no-permission: "Недостаточно прав."
-  spawner-changed: "Спавнер теперь призывает: <#8BE9DE><bold><mob>"
+  spawner-changed: "Спавнер теперь призывает: <bold><mob>"
   cooldown: "Подождите ещё <time> сек."
   limit-reached: "Этот спавнер уже менялся максимальное число раз (<max>)."
   no-mobs: "Поменять моба не получилось. Обратитесь к администрации."
