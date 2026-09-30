@@ -33,9 +33,10 @@ public class AncestorCommand implements TabExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         final SubCommand sub = args.length < 1 ? null : this.findSubCommand(args[0]);
         if (sub == null) {
-            sender.sendMessage("/ancestor give <игрок> [кол-во] | set <моб> | reload");
+            sender.sendMessage("/ancestor give <игрок> | set <моб> | reload");
             return true;
         }
+
         if (!this.hasPermission(sender, sub)) {
             config.sendMessage(sender, config.getNoPermissionMessage());
             return true;

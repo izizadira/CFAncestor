@@ -15,6 +15,7 @@ public class MobTypes {
     public static EntityType parse(String input) {
         final NamespacedKey key = NamespacedKey.fromString(input.toLowerCase(Locale.ROOT));
         final EntityType type = key != null ? Registry.ENTITY_TYPE.get(key) : null;
+
         return type != null && isSpawnerMob(type) ? type : null;
     }
 

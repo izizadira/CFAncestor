@@ -2,7 +2,9 @@ package ru.izizadira.cfancestor;
 
 import lombok.Getter;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.izizadira.cfancestor.command.AncestorCommand;
 import ru.izizadira.cfancestor.hook.WorldGuardHook;
@@ -23,18 +25,19 @@ public final class CFAncestor extends JavaPlugin {
         super.saveDefaultConfig();
 
         final Config config = new Config(this);
-        final WorldGuardHook worldGuard = super.getServer().getPluginManager().isPluginEnabled("WorldGuard")
+        final PluginManager pm = super.getServer().getPluginManager();
+
+        final WorldGuardHook worldGuard = pm.isPluginEnabled("WorldGuard")
                 ? new WorldGuardHook()
                 : null;
 
-        super.getCommand("ancestor").setExecutor(new AncestorCommand(config));
-        super.getServer().getPluginManager().registerEvents(
+        pm.registerEvents(
                 new BukkitListener(this, config, new SpawnerEffects(this, config), worldGuard),
                 this
         );
 
-        if (BSTATS_PLUGIN_ID > 0) {
-            new Metrics(this, BSTATS_PLUGIN_ID);
-        }
+        super.getCommand("ancestor").setExecutor(new AncestorCommand(config));
+
+        new Metrics(this, BSTATS_PLUGIN_ID);
     }
 }

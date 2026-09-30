@@ -28,6 +28,7 @@ public class ReloadCommand implements SubCommand {
     @Override
     public void onCommand(@NonNull CommandSender sender, @NonNull String[] args) {
         config.reload();
+
         sender.sendMessage(Component.text("✔", TextColor.color(0x07FF00), TextDecoration.BOLD));
     }
 

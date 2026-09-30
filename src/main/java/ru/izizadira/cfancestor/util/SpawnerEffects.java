@@ -52,6 +52,7 @@ public class SpawnerEffects {
 
         for (int strand = 0; strand < strands; strand++) {
             final double angle = baseAngle + 2 * Math.PI * strand / strands;
+
             center.getWorld().spawnParticle(helix.particle(),
                     center.getX() + Math.cos(angle) * radius, y, center.getZ() + Math.sin(angle) * radius,
                     1, 0, 0, 0, 0, helix.data());
@@ -60,10 +61,12 @@ public class SpawnerEffects {
 
     private void finish(Location center) {
         final Config.ParticleEffect burst = config.getBurstParticle();
+
         if (burst != null) {
             center.getWorld().spawnParticle(burst.particle(), center, config.getBurstCount(),
                     BURST_SPREAD, BURST_SPREAD, BURST_SPREAD, config.getBurstSpeed(), burst.data());
         }
+
         if (config.getSound() != null) center.getWorld().playSound(config.getSound(), center.getX(), center.getY(), center.getZ());
     }
 }

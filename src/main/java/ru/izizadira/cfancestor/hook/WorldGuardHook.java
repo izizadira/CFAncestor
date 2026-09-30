@@ -26,6 +26,7 @@ public class WorldGuardHook {
     public boolean canBuild(Player player, Location location) {
         final LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(player);
         if (WorldGuard.getInstance().getPlatform().getSessionManager().hasBypass(localPlayer, localPlayer.getWorld())) return true;
+
         return this.query().testBuild(BukkitAdapter.adapt(location), localPlayer);
     }
 

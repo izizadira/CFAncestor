@@ -78,9 +78,7 @@ public class BukkitListener implements Listener {
         spawner.update();
 
         stack.setAmount(stack.getAmount() - 1);
-        if (!bypassCooldown && config.getCooldownMillis() > 0) {
-            cooldowns.put(player.getUniqueId(), System.currentTimeMillis() + config.getCooldownMillis());
-        }
+        if (!bypassCooldown && config.getCooldownMillis() > 0) cooldowns.put(player.getUniqueId(), System.currentTimeMillis() + config.getCooldownMillis());
 
         effects.play(block);
         config.sendActionBar(player, config.getSpawnerChangedMessage(), Placeholder.component("mob", MobTypes.displayName(resultType)));
@@ -105,6 +103,7 @@ public class BukkitListener implements Listener {
             cooldowns.remove(playerId);
             return 0;
         }
+
         return left;
     }
 }
