@@ -28,8 +28,6 @@ public class SetCommand implements SubCommand {
     @Getter
     private final Permission permission = new Permission("cfancestor.set");
 
-    private final Config config;
-
     @Override
     public void onCommand(@NonNull CommandSender sender, @NonNull String[] args) {
         if (!(sender instanceof Player player)) {

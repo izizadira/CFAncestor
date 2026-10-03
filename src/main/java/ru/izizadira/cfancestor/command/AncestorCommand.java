@@ -24,7 +24,7 @@ public class AncestorCommand implements TabExecutor {
         this.config = config;
         this.subCommands = List.of(
                 new GiveCommand(config),
-                new SetCommand(config),
+                new SetCommand(),
                 new ReloadCommand(config)
         );
     }
