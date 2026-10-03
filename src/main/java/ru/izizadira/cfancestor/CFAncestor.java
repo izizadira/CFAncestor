@@ -27,13 +27,10 @@ public final class CFAncestor extends JavaPlugin {
         final Config config = new Config(this);
         final PluginManager pm = super.getServer().getPluginManager();
 
-        final WorldGuardHook worldGuard = pm.isPluginEnabled("WorldGuard")
-                ? new WorldGuardHook()
-                : null;
+        final WorldGuardHook worldGuard = pm.isPluginEnabled("WorldGuard") ? new WorldGuardHook() : null;
 
         pm.registerEvents(
-                new BukkitListener(this, config, new SpawnerEffects(this, config), worldGuard),
-                this
+                new BukkitListener(this, config, new SpawnerEffects(this, config), worldGuard), this
         );
 
         super.getCommand("ancestor").setExecutor(new AncestorCommand(config));
